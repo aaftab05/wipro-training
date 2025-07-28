@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Palindrome Checker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Palindrome Checker</h1>
+  <form id="palForm">
+    <label for="text">Enter text or number:</label>
+    <input type="text" id="text" name="text" required>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="result"></div>
+  <div class="center-links"></div>
+    <a href="/">Go to Home Page</a>
+    <a href="/about">Go to About Page</a>
+    <a href="/fibonacci">Go to Fibonacci Page</a>
+    <a href="/factorial">Go to Factorial Page</a>
+  </div>
+  <script>
+    document.getElementById('palForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const str = document.getElementById('text').value;
+      const cleaned = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+      const isPalindrome = cleaned === cleaned.split('').reverse().join('');
+      document.getElementById('result').textContent =
+        isPalindrome
+          ? `"${str}" is a palindrome!`
+          : `"${str}" is not a palindrome.`;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fibonacci Series Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Fibonacci Series Generator</h1>
+  <form id="fibForm">
+    <label for="count">Enter number of terms:</label>
+    <input type="number" id="count" name="count" min="1" required>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="result"></div>
+  <div class="center-links"></div>
+    <a href="/">Go to Home Page</a>
+    <a href="/about">Go to About Page</a>
+    <a href="/palindrome">Go to Palindrome Page</a>
+    <a href="/factorial">Go to Factorial Page</a>
+  </div>
+
+
+  <script>
+    document.getElementById('fibForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const n = parseInt(document.getElementById('count').value, 10);
+      let fib = [];
+      if (n >= 1) fib.push(0);
+      if (n >= 2) fib.push(1);
+      for (let i = 2; i < n; i++) {
+        fib.push(fib[i-1] + fib[i-2]);
+      }
+      document.getElementById('result').textContent = 
+        'Fibonacci Series: ' + fib.join(', ');
+    });
+  </script>
